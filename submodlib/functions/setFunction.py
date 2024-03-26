@@ -65,7 +65,7 @@ class SetFunction():
 		"""
 
 		if budget >= len(self.effective_ground):
-			raise Exception("Budget must be less than effective ground set size")
+			return [(-1,-1)]
 		if type(costs) == type(None):
 			return self.cpp_obj.maximize(optimizer, budget, stopIfZeroGain, stopIfNegativeGain, epsilon, verbose, show_progress, [], costSensitiveGreedy)
 		else:
