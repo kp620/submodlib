@@ -64,7 +64,7 @@ class SetFunction():
 
 		"""
 
-		if budget >= len(self.effective_ground):
+		if budget > len(self.effective_ground):
 			budget = len(self.effective_ground) - 1
 			if(budget<0):
 				budget = 0
