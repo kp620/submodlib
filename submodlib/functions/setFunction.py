@@ -33,7 +33,7 @@ class SetFunction():
 			return 0
 		return self.cpp_obj.evaluate(X)
 
-	def maximize(self, budget, optimizer='NaiveGreedy', stopIfZeroGain=False, stopIfNegativeGain=False, epsilon = 0.1, verbose=False, show_progress=True, costs=None, costSensitiveGreedy=False):
+	def maximize(self, budget, optimizer='NaiveGreedy', stopIfZeroGain=False, stopIfNegativeGain=False, epsilon = 0.1, verbose=False, show_progress=False, costs=None, costSensitiveGreedy=False):
 		"""Compute the optimal subset with maximum score for the given *budget*.
 
 		Parameters
