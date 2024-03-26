@@ -33,7 +33,7 @@ class SetFunction():
 			return 0
 		return self.cpp_obj.evaluate(X)
 
-	def maximize(self, budget, optimizer='NaiveGreedy', stopIfZeroGain=False, stopIfNegativeGain=False, epsilon = 0.1, verbose=False, show_progress=False, costs=None, costSensitiveGreedy=False):
+	def maximize(self, budget, optimizer='NaiveGreedy', stopIfZeroGain=False, stopIfNegativeGain=False, epsilon = 0.1, verbose=False, show_progress=True, costs=None, costSensitiveGreedy=False):
 		"""Compute the optimal subset with maximum score for the given *budget*.
 
 		Parameters
@@ -65,7 +65,12 @@ class SetFunction():
 		"""
 
 		if budget >= len(self.effective_ground):
-			return [(-1,-1)]
+			budget = len(self.effective_ground) - 1
+			if(budget<0):
+				budget = 0
+			print("Budget is greater than effective ground set size. Resetting budget to ", budget)
+			# raise Exception("Budget must be less than effective ground set size")
+			# return [(-1,-1)]
 		if type(costs) == type(None):
 			return self.cpp_obj.maximize(optimizer, budget, stopIfZeroGain, stopIfNegativeGain, epsilon, verbose, show_progress, [], costSensitiveGreedy)
 		else:
